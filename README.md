@@ -73,9 +73,8 @@ This object requires 2 parameters:
 This object reads extracted email id data from the input parameter file location.
 It uses Spark sql to calculate the count for each email ids and then sorts the data by count for top 100 recipients.
 sample output
-+--------------------+----------+
 |             emailId|emailCount|
-+--------------------+----------+
+_________________________________
 |Arnold  John <Joh...|       290|
 |          Ina Rangel|       277|
 |slafontaine@globa...|       213|
