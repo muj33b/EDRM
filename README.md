@@ -30,12 +30,10 @@ For top 100 recipients, job should be executed in EnronEmailToCC.scala followed 
 This object requires 1 input parameter which should specify the XML file path.
 
 Average size of all the emails is printed on the stdout. eg. sample output
------ Enron Email Info --------
+Enron Email Info
 Total Size of Emails   : 4.7106064E7
 Total Number of Emails : 17110
--------------------------------
 Average email size      : 2753.13056691993
--------------------------------
 
 
 2. EnronEmailToCC.scala
