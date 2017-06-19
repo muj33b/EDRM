@@ -27,13 +27,6 @@ For top 100 recipients, job should be executed in EnronEmailToCC.scala followed 
 1. EnronDFXMLEmailSize.scala
     This package reads XML files in local or distributed filesystem with Spark DataFrame. It uses 2 accumulators
 "Total Email Size" and "Total Number of Emails". Email sizes are extracted from "FileSize" attribute of FilePath="text_000" of ExternalFile tag
-
-<File FileType="Native">
-						<ExternalFile FilePath="native_000" FileName="3.212424.GY1OFUN31J4TWFXVNLGGPSX5IKJLLYXLA.eml" FileSize="715" Hash="15EF9A91A074909756DF3FBFDAB31DEE"/>
-					</File>
-					<File FileType="Text">
-						<ExternalFile FilePath="text_000" FileName="3.212424.GY1OFUN31J4TWFXVNLGGPSX5IKJLLYXLA.txt" FileSize="495" Hash="DDA7DA05E1F3199846713FF05057EC1A"/>
-					</File>
 This object requires 1 input parameter which should specify the XML file path.
 
 Average size of all the emails is printed on the stdout. eg. sample output
