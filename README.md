@@ -69,24 +69,24 @@ It uses Spark sql to calculate the count for each email ids and then sorts the d
 
 sample output
 
-             emailId | emailCount |
----------------------|-------------
-|Arnold  John <Joh...|         290|
-|          Ina Rangel|         277|
-|slafontaine@globa...|         213|
-|Arora  Harry <Har...|         190|
-|     John J Lavorato|         172|
-|         Harry Arora|         170|
-|     Jennifer Fraser|         159|
-|         John Arnold|         134|
-|    Jennifer Medcalf|         126|
-|      Matthew Arnold|         126|
-|Jennifer White <j...|         118|
-|      Jennifer Burns|         109|
-|harry.arora@enron...|         102|
-|       Brian Hoskins|         102|
-| John </O=ENRON/O...|         101|
-|harry.arora@enron...|         100|
+            emailId | emailCount 
+--------------------|-------------
+Arnold  John <Joh...|         290
+          Ina Rangel|         277
+slafontaine@globa...|         213
+Arora  Harry <Har...|         190
+     John J Lavorato|         172
+         Harry Arora|         170
+     Jennifer Fraser|         159
+         John Arnold|         134
+    Jennifer Medcalf|         126
+      Matthew Arnold|         126
+Jennifer White <j...|         118
+      Jennifer Burns|         109
+harry.arora@enron...|         102
+       Brian Hoskins|         102
+ John </O=ENRON/O...|         101
+harry.arora@enron...|         100
 
 
 
