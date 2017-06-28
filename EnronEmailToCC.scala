@@ -53,6 +53,10 @@ object EnronEmailToCC {
             (tagDataType, tagName, tagValue)
    })
 
+   //Lots of email ids have firstname lastname ..... format
+   
+   val pattern= raw"(\w+)(\s+)(\w+)|(((\p{Alnum})+.(\p{Alnum})+)|((\p{Alnum})+))@(?i)enron.com".r    
+
    import org.apache.spark.rdd.RDD
    def createNsaveDF (path: String, df: RDD[Seq[(String, String, String)]] , filterTag: String, weightage: String) : Unit =
    {
@@ -62,6 +66,9 @@ object EnronEmailToCC {
        filter(_._2.contains(filterTag)).  // select only the required filter tag eg. #To or #CC
        map(x => x._3).   //Get the values (comma separated) from 3rd element
        flatMap(_.split(",")).    //split comma separated emailIds into individual record to assign weightage
+       map(_.trim).
+       map(x => pattern.findFirstIn(x).getOrElse(x)).
+       map(_.replaceAll(" +"," ")).
        map(_.concat(weightage)).  //assign weightage 1.0 for 'To' emailIds and 0.5 for 'CC' emails
        saveAsTextFile(path)  // save the output as we can find top 100 recipients only once we processed all the records
    }
