@@ -41,10 +41,13 @@ Average word size = totWordCount / TotuniqueWords.
 This object requires 1 input parameter which should specify the text email file path.
 
 Average size of word in the emails is printed on the stdout. eg. sample output
------ Enron Email Info --------
+
+Enron Email Info --------
+
 Total no. of Words        : 68.0
+
 Total average words       : 4.470588235294118
--------------------------------
+
 
 ###### **2. EnronEmailToCC.scala**
 
