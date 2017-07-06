@@ -22,28 +22,29 @@ It calculates average size of email text and calculates top 100 email recipients
 
 **Solution:**
 
-There are 3 scala objects: 
+There are 4 scala objects: 
 
-###### EnronDFXMLEmailSize.scala	=> for Average email size 
+###### EnronEmailAverageWord.scala	=> for Average word size in the emails
 
 ###### EnronEmailToCC.scala			=> for extracting To and CC email Ids and 
 
 ###### EnronEmailCountDF.scala		=> for counting and finding top 100 email recipients from extracted Ids (EnronEmailToCC).
 
-
+###### EnronDFXMLEmailSize.scala	=> for Average email size 
 
 ###### **1. EnronDFXMLEmailSize.scala**
 
-    This class reads XML files in local or distributed filesystem with Spark DataFrame. It uses 2 accumulators
-"Total Email Size" and "Total Number of Emails". Email sizes are extracted from "FileSize" attribute of FilePath="text_000" of ExternalFile tag
-This object requires 1 input parameter which should specify the XML file path.
+    This class reads text email files in local or distributed filesystem with Spark RDD and converts it to DataFrame. Words are extracted from records (splitted by space), length of each word is attached, zero length words and duplicates are removed. Only words are considered, email ids, website etc. are eliminated as it will result in unfair or skewed result.
+Length of all the words are added and divided by the Total number of words (unique) to get the average word size.
+Average word size = totWordCount / TotuniqueWords.
 
-Average size of all the emails is printed on the stdout. eg. sample output
-Enron Email Info
-Total Size of Emails   : 4.7106064E7
-Total Number of Emails : 17110
-Average email size      : 2753.13056691993
+This object requires 1 input parameter which should specify the text email file path.
 
+Average size of word in the emails is printed on the stdout. eg. sample output
+----- Enron Email Info --------
+Total no. of Words        : 68.0
+Total average words       : 4.470588235294118
+-------------------------------
 
 ###### **2. EnronEmailToCC.scala**
 
@@ -74,17 +75,48 @@ sample output
 
 Arnold  John <Joh...|         290
 
-Ina Rangel          |         277
+          Ina Rangel|         277
 
 slafontaine@globa...|         213
 
 Arora  Harry <Har...|         190
 
-John J Lavorato     |         172
+     John J Lavorato|         172
 
-Harry Arora         |         170
+         Harry Arora|         170
+
+     Jennifer Fraser|         159
+
+         John Arnold|         134
+
+    Jennifer Medcalf|         126
+
+      Matthew Arnold|         126
+
+Jennifer White <j...|         118
+
+      Jennifer Burns|         109
+
+harry.arora@enron...|         102
+
+       Brian Hoskins|         102
+
+ John </O=ENRON/O...|         101
+
+harry.arora@enron...|         100
 
 
+###### **4. EnronDFXMLEmailSize.scala**
+
+    This class reads XML files in local or distributed filesystem with Spark DataFrame. It uses 2 accumulators
+"Total Email Size" and "Total Number of Emails". Email sizes are extracted from "FileSize" attribute of FilePath="text_000" of ExternalFile tag
+This object requires 1 input parameter which should specify the XML file path.
+
+Average size of all the emails is printed on the stdout. eg. sample output
+Enron Email Info
+Total Size of Emails   : 4.7106064E7
+Total Number of Emails : 17110
+Average email size      : 2753.13056691993
 
 
 
